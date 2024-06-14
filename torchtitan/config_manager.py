@@ -162,6 +162,49 @@ class JobConfig:
             help="Tokenizer path",
         )
 
+        self.parser.add_argument(
+            "--model.dim",
+            type=int,
+            default=-1,
+            help="",
+        )
+        self.parser.add_argument(
+            "--model.n_layers",
+            type=int,
+            default=-1,
+            help="",
+        )
+        self.parser.add_argument(
+            "--model.n_heads",
+            type=int,
+            default=-1,
+            help="",
+        )
+        self.parser.add_argument(
+            "--model.n_kv_heads",
+            type=int,
+            default=-1,
+            help="",
+        )
+        self.parser.add_argument(
+            "--model.multiple_of",
+            type=float,
+            default=-1,
+            help="",
+        )
+        self.parser.add_argument(
+            "--model.ffn_dim_multiplier",
+            type=int,
+            default=-1,
+            help="",
+        )
+        self.parser.add_argument(
+            "--model.rope_theta",
+            type=int,
+            default=-1,
+            help="",
+        )
+
         # optimizer configs
         self.parser.add_argument(
             "--optimizer.name", type=str, default="AdamW", help="Optimizer to use"

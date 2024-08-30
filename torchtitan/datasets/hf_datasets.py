@@ -100,7 +100,7 @@ class HuggingFaceDataset(IterableDataset, Stateful):
             # (we default to en)
             ds = load_dataset(dataset_path, name="en", split="train", streaming=True)
         else:
-            ds = load_dataset(dataset_path, split="train")
+            ds = load_dataset(dataset_path, split="train", streaming=True)
 
         # TODO: support shuffling and checkpointing
         self.dataset_name = dataset_name
@@ -119,7 +119,7 @@ class HuggingFaceDataset(IterableDataset, Stateful):
         while True:
             for sample in self._get_data_iter():
                 sample_text = sample["text"]
-                sample_tokens = self._tokenizer.encode(sample_text, bos=True, eos=True)
+                sample_tokens = self._tokenizer.encode(sample_text, allowed_special="all", bos=True, eos=True)
                 self._all_tokens.extend(sample_tokens)
                 self._sample_idx += 1
 
